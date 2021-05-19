@@ -1,0 +1,8 @@
+{
+  "name": "eslint-config-typescript",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/Byloth/eslint-config.git",
+  "author": "Matteo Bilotta <me@byloth.net>",
+  "license": "GPL-3.0-or-later"
+}
