@@ -1,18 +1,11 @@
 const DYNAMIC_LEVEL = process.env.NODE_ENV === "production" ? "error" : "warn";
 
 module.exports = {
-  root: true,
-  env: {
-    browser: true,
-    es2021: true,
-    node: true
-  },
-  extends: ["eslint:recommended"],
-  parser: "@babel/eslint-parser",
-  parserOptions: {
-    ecmaVersion: 2021,
-    sourceType: "module"
-  },
+  extends: [
+    "eslint:recommended",
+    "standard"
+  ],
+  env: { browser: true },
   rules: {
     "arrow-parens": ["error", "always"],
     "brace-style": ["error", "allman", { allowSingleLine: true }],

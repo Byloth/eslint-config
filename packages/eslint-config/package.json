@@ -4,5 +4,12 @@
   "main": "index.js",
   "repository": "https://github.com/Byloth/eslint-config.git",
   "author": "Matteo Bilotta <me@byloth.net>",
-  "license": "GPL-3.0-or-later"
+  "license": "GPL-3.0-or-later",
+  "files": ["index.js"],
+  "dependencies": {
+    "eslint-config-standard": "^16.0.2"
+  },
+  "peerDependencies": {
+    "eslint": "^7.26.0"
+  }
 }

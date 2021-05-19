@@ -1,2 +1,3 @@
-# eslint-config
-✔ A collection of some common sense linting rules.
+# ESLint configurations ✔
+
+### A collection of some common sense linting rules.

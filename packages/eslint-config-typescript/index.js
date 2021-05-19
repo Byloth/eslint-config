@@ -1,17 +1,10 @@
 const DYNAMIC_LEVEL = process.env.NODE_ENV === "production" ? "error" : "warn";
 
 module.exports = {
-  root: true,
-  env: {
-    browser: true,
-    es2021: true,
-    node: true
-  },
   extends: [
-    "@nuxtjs/eslint-config-typescript",
-    "plugin:nuxt/recommended"
+    "plugin:@typescript-eslint/recommended",
+    "@byloth/eslint-config"
   ],
-  parserOptions: { ecmaVersion: 2021 },
   rules: {
     "@typescript-eslint/no-non-null-assertion": "off",
     "@typescript-eslint/no-unused-vars": [DYNAMIC_LEVEL, { args: "none" }],

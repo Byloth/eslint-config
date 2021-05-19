@@ -1,17 +1,10 @@
 const DYNAMIC_LEVEL = process.env.NODE_ENV === "production" ? "error" : "warn";
 
 module.exports = {
-  root: true,
-  env: {
-    browser: true,
-    es2021: true,
-    node: true
-  },
   extends: [
-    "@nuxtjs/eslint-config-typescript",
-    "plugin:nuxt/recommended"
+    "plugin:vue/recommended",
+    "@byloth/eslint-config"
   ],
-  parserOptions: { ecmaVersion: 2021 },
   rules: {
     "vue/html-closing-bracket-newline": ["error", { singleline: "never", multiline: "never" }],
     "vue/html-indent": ["error", 4],

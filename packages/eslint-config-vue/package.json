@@ -4,5 +4,13 @@
   "main": "index.js",
   "repository": "https://github.com/Byloth/eslint-config.git",
   "author": "Matteo Bilotta <me@byloth.net>",
-  "license": "GPL-3.0-or-later"
+  "license": "GPL-3.0-or-later",
+  "files": ["index.js"],
+  "dependencies": {
+    "@byloth/eslint-config": "^1.0.0",
+    "eslint-plugin-vue": "^7.9.0"
+  },
+  "peerDependencies": {
+    "vue-eslint-parser": "^7.6.0"
+  }
 }
