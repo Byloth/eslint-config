@@ -15,9 +15,17 @@ module.exports = {
   rules: {
     "@typescript-eslint/no-non-null-assertion": "off",
     "@typescript-eslint/no-unused-vars": [DYNAMIC_LEVEL, { args: "none" }],
+    "@typescript-eslint/no-useless-constructor": "error",
     "@typescript-eslint/semi": ["error"]
   },
   overrides: [
+    {
+      files: ["*.js"],
+      rules: {
+        "@typescript-eslint/explicit-module-boundary-types": "off",
+        "@typescript-eslint/no-unused-vars": "off"
+      }
+    },
     {
       files: [".babelrc", ".eslintrc.js", "*.config.js"],
       rules: {

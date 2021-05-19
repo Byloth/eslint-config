@@ -27,11 +27,14 @@ module.exports = {
     "no-unreachable": DYNAMIC_LEVEL,
     "no-trailing-spaces": "error",
     "no-unused-vars": [DYNAMIC_LEVEL, { args: "none" }],
+    "no-useless-constructor": "error",
     "object-shorthand": ["error", "consistent"],
+    "operator-linebreak": ["error", "after"],
+    "prefer-rest-params": DYNAMIC_LEVEL,
     "quote-props": ["error", "consistent"],
     "quotes": ["error", "double", { allowTemplateLiterals: true, avoidEscape: true }],
     "semi": ["error", "always"],
-    "space-before-function-paren": ["error", { anonymous: "never", named: "never", asyncArrow: "always" }]
+    "space-before-function-paren": ["error", { anonymous: "never", named: "never", asyncArrow: "always" }],
   },
   overrides: [
     {
