@@ -1,5 +1,5 @@
 {
-  "name": "eslint-config-vue",
+  "name": "@byloth/eslint-config-vue",
   "version": "1.0.0",
   "main": "index.js",
   "repository": "https://github.com/Byloth/eslint-config.git",
