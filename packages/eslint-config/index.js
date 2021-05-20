@@ -10,6 +10,7 @@ module.exports = {
     "arrow-parens": ["error", "always"],
     "brace-style": ["error", "allman", { allowSingleLine: true }],
     "comma-dangle": DYNAMIC_LEVEL,
+    "generator-star-spacing": ["error", "after"],
     "indent": ["error", 4, { SwitchCase: 1 }],
     "lines-between-class-members": "off",
     "newline-per-chained-call": ["error", { ignoreChainWithDepth: 2 }],
