@@ -5,6 +5,10 @@ module.exports = {
     "plugin:@typescript-eslint/recommended",
     "@byloth/eslint-config"
   ],
+  plugins: ["@typescript-eslint"],
+  parserOptions: {
+    parser: "@typescript-eslint/parser"
+  },
   rules: {
     "@typescript-eslint/no-non-null-assertion": "off",
     "@typescript-eslint/no-unused-vars": [DYNAMIC_LEVEL, { args: "none" }],
