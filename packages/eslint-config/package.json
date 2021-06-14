@@ -1,18 +1,16 @@
 {
   "name": "@byloth/eslint-config",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "main": "index.js",
   "repository": "https://github.com/Byloth/eslint-config.git",
   "author": "Matteo Bilotta <me@byloth.net>",
   "license": "GPL-3.0-or-later",
   "files": ["index.js"],
-  "dependencies": {
-    "eslint-config-standard": "^16.0.2",
-    "eslint-plugin-import": "^2.23.2",
-    "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-promise": "~4.3.1"
-  },
   "peerDependencies": {
-    "eslint": "^6.8.0 || ^7.26.0"
+    "eslint": "^6.8.0 || ^7.28.0",
+    "eslint-config-standard": "^14.1.1 || ^16.0.3",
+    "eslint-plugin-import": "^2.23.4",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.3.1 || ^5.1.0"
   }
 }

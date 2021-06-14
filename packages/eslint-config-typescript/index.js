@@ -10,6 +10,8 @@ module.exports = {
     parser: "@typescript-eslint/parser"
   },
   rules: {
+    "generator-star-spacing": ["error", "after"],
+
     "@typescript-eslint/no-non-null-assertion": "off",
     "@typescript-eslint/no-unused-vars": [DYNAMIC_LEVEL, { args: "none" }],
     "@typescript-eslint/no-useless-constructor": "error",
