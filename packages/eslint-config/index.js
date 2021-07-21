@@ -13,6 +13,7 @@ module.exports = {
     "generator-star-spacing": ["error", "after"],
     "indent": ["error", 4, { SwitchCase: 1 }],
     "lines-between-class-members": "off",
+    "max-len": ["error", { "code": 120 }],
     "newline-per-chained-call": ["error", { ignoreChainWithDepth: 2 }],
     "no-console": DYNAMIC_LEVEL,
     "no-debugger": DYNAMIC_LEVEL,
