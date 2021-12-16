@@ -12,7 +12,8 @@ module.exports = {
     "vue/html-closing-bracket-newline": ["error", { singleline: "never", multiline: "never" }],
     "vue/html-indent": ["error", 4],
     "vue/html-self-closing": ["error", { html: { void: "always", normal: "never" } }],
-    "vue/max-attributes-per-line": ["error", { multiline: { max: 1, allowFirstLine: true }, singleline: 2 }],
+    "vue/max-attributes-per-line": ["error", { multiline: 1, singleline: 2 }],
+    "vue/first-attribute-linebreak": ["error", { multiline: "beside", singleline: "beside" }],
     "vue/no-unused-components": DYNAMIC_LEVEL,
     "vue/no-unused-vars": DYNAMIC_LEVEL,
     "vue/script-indent": ["error", 4, { baseIndent: 1 }]
