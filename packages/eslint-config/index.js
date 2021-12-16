@@ -7,11 +7,11 @@ module.exports = {
   ],
   env: {
     browser: true,
-    es2021: true,
+    es2020: true,
     node: true,
     worker: true
   },
-  parserOptions: { ecmaVersion: 2021 },
+  parserOptions: { ecmaVersion: 2020 },
   rules: {
     "arrow-parens": ["error", "always"],
     "brace-style": ["error", "allman", { allowSingleLine: true }],
