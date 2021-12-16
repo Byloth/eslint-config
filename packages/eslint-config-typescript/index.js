@@ -43,6 +43,10 @@ module.exports = {
       }
     },
     {
+      files: ["*.config.ts"],
+      rules: { "indent": ["error", 2, { SwitchCase: 1 }] }
+    },
+    {
       files: ["*.d.ts"],
       rules: {
         "@typescript-eslint/no-explicit-any": "off",
