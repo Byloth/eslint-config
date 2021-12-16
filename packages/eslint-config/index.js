@@ -1,10 +1,7 @@
 const DYNAMIC_LEVEL = process.env.NODE_ENV === "production" ? "error" : "warn";
 
 module.exports = {
-  extends: [
-    "eslint:recommended",
-    "standard"
-  ],
+  extends: ["eslint:recommended"],
   env: {
     browser: true,
     es2021: true,

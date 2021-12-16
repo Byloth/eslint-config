@@ -1,12 +1,12 @@
 {
   "name": "@byloth/eslint-config-vue",
-  "version": "2.0.1",
+  "version": "2.1.0",
   "main": "index.js",
   "repository": "https://github.com/Byloth/eslint-config.git",
   "author": "Matteo Bilotta <me@byloth.net>",
   "license": "GPL-3.0-or-later",
   "files": ["index.js"],
-  "dependencies": { "@byloth/eslint-config": "2.0.1" },
+  "dependencies": { "@byloth/eslint-config": "2.1.0" },
   "peerDependencies": {
     "eslint-plugin-vue": "^8.2.0",
     "vue-eslint-parser": "^8.0.1"
