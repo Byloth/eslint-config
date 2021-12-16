@@ -6,9 +6,7 @@ module.exports = {
     "@byloth/eslint-config"
   ],
   plugins: ["@typescript-eslint"],
-  parserOptions: {
-    parser: "@typescript-eslint/parser"
-  },
+  parserOptions: { parser: "@typescript-eslint/parser" },
   rules: {
     "generator-star-spacing": ["error", "after"],
 

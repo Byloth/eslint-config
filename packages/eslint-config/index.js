@@ -5,7 +5,13 @@ module.exports = {
     "eslint:recommended",
     "standard"
   ],
-  env: { browser: true },
+  env: {
+    browser: true,
+    es2021: true,
+    node: true,
+    worker: true
+  },
+  parserOptions: { ecmaVersion: 2021 },
   rules: {
     "arrow-parens": ["error", "always"],
     "brace-style": ["error", "allman", { allowSingleLine: true }],
