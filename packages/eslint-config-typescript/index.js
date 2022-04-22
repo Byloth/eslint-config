@@ -38,6 +38,7 @@ module.exports = {
     {
       files: ["*.ts"],
       rules: {
+        "no-dupe-class-members": "off",
         "no-unused-vars": "off",
         "semi": "off"
       }

@@ -1,14 +1,14 @@
 {
   "name": "@byloth/eslint-config-typescript",
-  "version": "2.1.1",
+  "version": "2.2.0",
   "main": "index.js",
   "repository": "https://github.com/Byloth/eslint-config.git",
   "author": "Matteo Bilotta <me@byloth.net>",
   "license": "GPL-3.0-or-later",
   "files": ["index.js"],
-  "dependencies": { "@byloth/eslint-config": "2.1.0" },
+  "dependencies": { "@byloth/eslint-config": "2.2.0" },
   "peerDependencies": {
-    "@typescript-eslint/eslint-plugin": "^5.7.0",
-    "@typescript-eslint/parser": "^5.7.0"
+    "@typescript-eslint/eslint-plugin": "^5.20.0",
+    "@typescript-eslint/parser": "^5.20.0"
   }
 }
