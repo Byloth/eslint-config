@@ -4,11 +4,11 @@ module.exports = {
   extends: ["eslint:recommended"],
   env: {
     browser: true,
-    es2021: true,
+    es2022: true,
     node: true,
     worker: true
   },
-  parserOptions: { ecmaVersion: 2021 },
+  parserOptions: { ecmaVersion: 2022 },
   rules: {
     "arrow-parens": ["error", "always"],
     "brace-style": ["error", "allman", { allowSingleLine: true }],

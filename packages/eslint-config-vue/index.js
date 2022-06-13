@@ -5,6 +5,11 @@ module.exports = {
     "plugin:vue/vue3-recommended",
     "@byloth/eslint-config"
   ],
+  globals: {
+    defineProps: true,
+    defineEmits: true,
+    defineExpose: true
+  },
   plugins: ["vue"],
   rules: {
     "generator-star-spacing": ["error", "after"],
@@ -16,6 +21,7 @@ module.exports = {
     "vue/first-attribute-linebreak": ["error", { multiline: "beside", singleline: "beside" }],
     "vue/no-unused-components": DYNAMIC_LEVEL,
     "vue/no-unused-vars": DYNAMIC_LEVEL,
+    "vue/no-v-model-argument": "off",
     "vue/script-indent": ["error", 4, { baseIndent: 1 }]
   },
   overrides: [
