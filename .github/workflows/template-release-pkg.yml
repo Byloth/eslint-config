@@ -32,9 +32,8 @@ jobs:
           node-version: 18
           registry-url: ${{ inputs.registry-url }}
 
-      - name: Navigate to package
-        run: cd packages/${{ inputs.package-name }}
       - name: Package release
+        working-directory: ./packages/${{ inputs.package-name }}
         run: npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.AUTH_TOKEN }}
