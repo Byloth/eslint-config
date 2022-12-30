@@ -17,7 +17,7 @@ jobs:
     uses: ./.github/workflows/template-release-pkg.yml
     with:
       package-name: eslint-config
-      registry-url: https://npm.pkg.github.com/
+      registry-url: ${{ inputs.registry-url }}
 
     secrets:
       AUTH_TOKEN: ${{ secrets.AUTH_TOKEN }}
@@ -28,7 +28,7 @@ jobs:
     uses: ./.github/workflows/template-release-pkg.yml
     with:
       package-name: eslint-config-typescript
-      registry-url: https://npm.pkg.github.com/
+      registry-url: ${{ inputs.registry-url }}
 
     secrets:
       AUTH_TOKEN: ${{ secrets.AUTH_TOKEN }}
@@ -39,7 +39,7 @@ jobs:
     uses: ./.github/workflows/template-release-pkg.yml
     with:
       package-name: eslint-config-vue
-      registry-url: https://npm.pkg.github.com/
+      registry-url: ${{ inputs.registry-url }}
 
     secrets:
       AUTH_TOKEN: ${{ secrets.AUTH_TOKEN }}
