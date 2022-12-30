@@ -36,13 +36,14 @@ module.exports = {
   },
   overrides: [
     {
-      files: [".babelrc", ".eslintrc.js", "*.config.js"],
+      files: [".babelrc", ".eslintrc.js", "config.js", "*.config.js"],
       rules: { "indent": ["error", 2, { SwitchCase: 1 }] }
     },
     {
       files: ["*.json"],
       rules: {
         "indent": ["error", 2],
+        "max-len": "off",
         "no-unused-expressions": "off",
         "semi": ["error", "never"]
       }

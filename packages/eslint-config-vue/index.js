@@ -10,6 +10,7 @@ module.exports = {
     defineEmits: true,
     defineExpose: true
   },
+  ignorePatterns: ["!/.vitepress/"],
   plugins: ["vue"],
   rules: {
     "generator-star-spacing": ["error", "after"],
@@ -24,13 +25,11 @@ module.exports = {
     "vue/no-v-model-argument": "off",
     "vue/script-indent": ["error", 4, { baseIndent: 1 }]
   },
-  overrides: [
-    {
-      files: ["*.vue"],
-      rules: {
-        "indent": "off",
-        "no-unused-vars": "off"
-      }
+  overrides: [{
+    files: ["*.vue"],
+    rules: {
+      "indent": "off",
+      "no-unused-vars": "off"
     }
-  ]
+  }]
 };

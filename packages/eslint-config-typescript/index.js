@@ -24,7 +24,7 @@ module.exports = {
       }
     },
     {
-      files: [".babelrc", ".eslintrc.js", "*.config.js"],
+      files: [".babelrc", ".eslintrc.js", "config.js", "*.config.js"],
       rules: {
         "@typescript-eslint/no-var-requires": "off"
       }
@@ -39,12 +39,13 @@ module.exports = {
       files: ["*.ts"],
       rules: {
         "no-dupe-class-members": "off",
+        "no-redeclare": "off",
         "no-unused-vars": "off",
         "semi": "off"
       }
     },
     {
-      files: ["*.config.ts"],
+      files: ["config.ts", "*.config.ts"],
       rules: { "indent": ["error", 2, { SwitchCase: 1 }] }
     },
     {
