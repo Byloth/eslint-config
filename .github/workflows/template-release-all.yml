@@ -14,7 +14,7 @@ on:
 jobs:
   eslint-config:
     name: "`eslint-config`"
-    uses: ./.github/workflows/template-release-all.yml
+    uses: ./.github/workflows/template-release-pkg.yml
     with:
       auth-token: ${{ secrets.GITHUB_TOKEN }}
       package-name: eslint-config
@@ -23,7 +23,7 @@ jobs:
   eslint-config-typescript:
     name: "`eslint-config-typescript`"
     needs: eslint-config
-    uses: ./.github/workflows/template-release-all.yml
+    uses: ./.github/workflows/template-release-pkg.yml
     with:
       auth-token: ${{ secrets.GITHUB_TOKEN }}
       package-name: eslint-config-typescript
@@ -32,7 +32,7 @@ jobs:
   eslint-config-vue:
     name: "`eslint-config-vue`"
     needs: eslint-config
-    uses: ./.github/workflows/template-release-all.yml
+    uses: ./.github/workflows/template-release-pkg.yml
     with:
       auth-token: ${{ secrets.GITHUB_TOKEN }}
       package-name: eslint-config-vue
