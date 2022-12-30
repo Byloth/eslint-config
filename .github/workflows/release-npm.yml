@@ -7,5 +7,5 @@ jobs:
   npm:
     name: NPM
     uses: ./.github/workflows/template-release-all.yml
-    with:
-      auth-token: ${{ secrets.NPM_TOKEN }}
+    secrets:
+      AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

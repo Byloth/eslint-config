@@ -2,10 +2,6 @@ name: "<template-release-pkg>"
 on:
   workflow_call:
     inputs:
-      auth-token:
-        required: true
-        type: string
-
       package-name:
         required: true
         type: string
@@ -14,6 +10,10 @@ on:
         default: https://registry.npmjs.org
         required: false
         type: string
+
+    secrets:
+      AUTH_TOKEN:
+        required: true
 
 jobs:
   release:
@@ -37,4 +37,4 @@ jobs:
       - name: Package release
         run: npm publish --access public
         env:
-          NODE_AUTH_TOKEN: ${{ inputs.auth_token }}
+          NODE_AUTH_TOKEN: ${{ secrets.AUTH_TOKEN }}
