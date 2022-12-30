@@ -33,7 +33,7 @@ jobs:
           registry-url: ${{ inputs.registry-url }}
 
       - name: Navigate to package
-        run: packages/${{ inputs.package-name }}
+        run: cd packages/${{ inputs.package-name }}
       - name: Package release
         run: npm publish --access public
         env:
