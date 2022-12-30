@@ -1,0 +1,12 @@
+name: GPR release
+on:
+  release:
+    types: [created]
+
+jobs:
+  gpr:
+    name: GPR
+    uses: ./.github/workflows/template-release-all.yml
+    with:
+      auth-token: ${{ secrets.GITHUB_TOKEN }}
+      registry-url: https://npm.pkg.github.com/

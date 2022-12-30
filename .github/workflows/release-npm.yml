@@ -1,0 +1,11 @@
+name: NPM release
+on:
+  release:
+    types: [created]
+
+jobs:
+  npm:
+    name: NPM
+    uses: ./.github/workflows/template-release-all.yml
+    with:
+      auth-token: ${{ secrets.NPM_TOKEN }}

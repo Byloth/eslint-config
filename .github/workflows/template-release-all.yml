@@ -1,0 +1,39 @@
+name: "<template-release-all>"
+on:
+  workflow_call:
+    inputs:
+      auth-token:
+        required: true
+        type: string
+
+      registry-url:
+        default: https://registry.npmjs.org
+        required: false
+        type: string
+
+jobs:
+  eslint-config:
+    name: "`eslint-config`"
+    uses: ./.github/workflows/template-release-all.yml
+    with:
+      auth-token: ${{ secrets.GITHUB_TOKEN }}
+      package-name: eslint-config
+      registry-url: https://npm.pkg.github.com/
+
+  eslint-config-typescript:
+    name: "`eslint-config-typescript`"
+    needs: eslint-config
+    uses: ./.github/workflows/template-release-all.yml
+    with:
+      auth-token: ${{ secrets.GITHUB_TOKEN }}
+      package-name: eslint-config-typescript
+      registry-url: https://npm.pkg.github.com/
+
+  eslint-config-vue:
+    name: "`eslint-config-vue`"
+    needs: eslint-config
+    uses: ./.github/workflows/template-release-all.yml
+    with:
+      auth-token: ${{ secrets.GITHUB_TOKEN }}
+      package-name: eslint-config-vue
+      registry-url: https://npm.pkg.github.com/

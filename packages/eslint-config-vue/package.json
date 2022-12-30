@@ -19,7 +19,7 @@
   "license": "Apache-2.0-or-later",
   "main": "index.js",
   "files": ["index.js"],
-  "dependencies": { "@byloth/eslint-config": "*" },
+  "dependencies": { "@byloth/eslint-config": "^2.4.0" },
   "peerDependencies": {
     "eslint-plugin-vue": "^9.8.0",
     "vue-eslint-parser": "^9.1.0"

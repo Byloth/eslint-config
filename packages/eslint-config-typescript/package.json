@@ -19,7 +19,7 @@
   "license": "Apache-2.0-or-later",
   "main": "index.js",
   "files": ["index.js"],
-  "dependencies": { "@byloth/eslint-config": "*" },
+  "dependencies": { "@byloth/eslint-config": "^2.4.0" },
   "peerDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.47.0",
     "@typescript-eslint/parser": "^5.47.0"

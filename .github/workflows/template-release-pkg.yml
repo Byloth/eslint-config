@@ -1,0 +1,40 @@
+name: "<template-release-pkg>"
+on:
+  workflow_call:
+    inputs:
+      auth-token:
+        required: true
+        type: string
+
+      package-name:
+        required: true
+        type: string
+
+      registry-url:
+        default: https://registry.npmjs.org
+        required: false
+        type: string
+
+jobs:
+  release:
+    name: Release
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Source code clone
+        uses: actions/checkout@v3
+      - name: Node.js 18 (LTS) setup
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          registry-url: ${{ inputs.registry-url }}
+
+      - name: Navigate to package
+        run: packages/${{ inputs.package-name }}
+      - name: Package release
+        run: npm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ inputs.auth_token }}
