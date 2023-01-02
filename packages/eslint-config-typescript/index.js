@@ -8,8 +8,6 @@ module.exports = {
   plugins: ["@typescript-eslint"],
   parserOptions: { parser: "@typescript-eslint/parser" },
   rules: {
-    "generator-star-spacing": ["error", "after"],
-
     "@typescript-eslint/no-non-null-assertion": "off",
     "@typescript-eslint/no-unused-vars": [DYNAMIC_LEVEL, { args: "none" }],
     "@typescript-eslint/no-useless-constructor": "error",
@@ -24,16 +22,12 @@ module.exports = {
       }
     },
     {
-      files: [".babelrc", ".eslintrc.js", "config.js", "*.config.js"],
-      rules: {
-        "@typescript-eslint/no-var-requires": "off"
-      }
+      files: [".babelrc", ".eslintrc.*", "config.js", "*.config.js"],
+      rules: { "@typescript-eslint/no-var-requires": "off" }
     },
     {
       files: ["*.json"],
-      rules: {
-        "@typescript-eslint/semi": ["error", "never"]
-      }
+      rules: { "@typescript-eslint/semi": ["error", "never"] }
     },
     {
       files: ["*.ts"],

@@ -8,7 +8,7 @@ module.exports = {
     node: true,
     worker: true
   },
-  parserOptions: { ecmaVersion: 2022 },
+  parserOptions: { ecmaVersion: "latest" },
   rules: {
     "arrow-parens": ["error", "always"],
     "brace-style": ["error", "allman", { allowSingleLine: true }],
@@ -36,7 +36,7 @@ module.exports = {
   },
   overrides: [
     {
-      files: [".babelrc", ".eslintrc.js", "config.js", "*.config.js"],
+      files: [".babelrc", ".eslintrc.*", "config.js", "*.config.js"],
       rules: { "indent": ["error", 2, { SwitchCase: 1 }] }
     },
     {

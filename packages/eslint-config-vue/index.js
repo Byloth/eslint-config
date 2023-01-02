@@ -10,11 +10,9 @@ module.exports = {
     defineEmits: true,
     defineExpose: true
   },
-  ignorePatterns: ["!/.vitepress/"],
+  ignorePatterns: ["!**/.vitepress/"],
   plugins: ["vue"],
   rules: {
-    "generator-star-spacing": ["error", "after"],
-
     "vue/html-closing-bracket-newline": ["error", { singleline: "never", multiline: "never" }],
     "vue/html-indent": ["error", 4],
     "vue/html-self-closing": ["error", { html: { void: "always", normal: "never" } }],
