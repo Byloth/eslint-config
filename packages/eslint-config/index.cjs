@@ -1,18 +1,26 @@
 const DYNAMIC_LEVEL = process.env.NODE_ENV === "production" ? "error" : "warn";
 
 module.exports = {
-  extends: ["eslint:recommended"],
+  extends: [
+    "eslint:recommended",
+    "plugin:import/recommended"
+  ],
   env: {
     browser: true,
     es2022: true,
     node: true,
     worker: true
   },
-  parserOptions: { ecmaVersion: "latest" },
+  parserOptions: {
+    ecmaVersion: "latest",
+    sourceType: "module"
+  },
+  plugins: ["import"],
   rules: {
     "arrow-parens": ["error", "always"],
+    "block-spacing": ["error", "always"],
     "brace-style": ["error", "allman", { allowSingleLine: true }],
-    "comma-dangle": DYNAMIC_LEVEL,
+    "comma-dangle": [DYNAMIC_LEVEL, "never"],
     "generator-star-spacing": ["error", "after"],
     "indent": ["error", 4, { SwitchCase: 1 }],
     "lines-between-class-members": "off",
@@ -26,6 +34,7 @@ module.exports = {
     "no-trailing-spaces": "error",
     "no-unused-vars": [DYNAMIC_LEVEL, { args: "none" }],
     "no-useless-constructor": "error",
+    "object-curly-spacing": ["error", "always"],
     "object-shorthand": ["error", "consistent"],
     "operator-linebreak": ["error", "after"],
     "prefer-rest-params": DYNAMIC_LEVEL,

@@ -1,10 +1,7 @@
 const DYNAMIC_LEVEL = process.env.NODE_ENV === "production" ? "error" : "warn";
 
 module.exports = {
-  extends: [
-    "plugin:vue/vue3-recommended",
-    "@byloth/eslint-config"
-  ],
+  extends: ["plugin:vue/vue3-recommended"],
   globals: {
     defineProps: true,
     defineEmits: true,
@@ -26,6 +23,7 @@ module.exports = {
   overrides: [{
     files: ["*.vue"],
     rules: {
+      "import/no-unresolved": "off",
       "indent": "off",
       "no-unused-vars": "off"
     }
