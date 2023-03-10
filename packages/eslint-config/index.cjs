@@ -21,6 +21,7 @@ module.exports = {
     "block-spacing": ["error", "always"],
     "brace-style": ["error", "allman", { allowSingleLine: true }],
     "comma-dangle": [DYNAMIC_LEVEL, "never"],
+    "comma-spacing": ["error", { "before": false, "after": true }],
     "generator-star-spacing": ["error", "after"],
     "indent": ["error", 4, { SwitchCase: 1 }],
     "lines-between-class-members": "off",
