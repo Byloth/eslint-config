@@ -23,6 +23,7 @@ module.exports = {
     "comma-dangle": [DYNAMIC_LEVEL, "never"],
     "comma-spacing": ["error", { "before": false, "after": true }],
     "generator-star-spacing": ["error", "after"],
+    "guard-for-in": "error",
     "indent": ["error", 4, { SwitchCase: 1 }],
     "lines-between-class-members": "off",
     "max-len": ["error", { "code": 120 }],
