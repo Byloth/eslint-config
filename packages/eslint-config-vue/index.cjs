@@ -24,7 +24,6 @@ module.exports = {
   overrides: [{
     files: ["*.vue"],
     rules: {
-      "import/no-unresolved": "off",
       "indent": "off",
       "no-unused-vars": "off"
     }
