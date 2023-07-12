@@ -1,13 +1,10 @@
 const DYNAMIC_LEVEL = process.env.NODE_ENV === "production" ? "error" : "warn";
 
 module.exports = {
-  extends: [
-    "eslint:recommended",
-    "plugin:import/recommended"
-  ],
+  extends: ["eslint:recommended"],
   env: {
     browser: true,
-    es2022: true,
+    es2024: true,
     node: true,
     worker: true
   },
@@ -15,7 +12,6 @@ module.exports = {
     ecmaVersion: "latest",
     sourceType: "module"
   },
-  plugins: ["import"],
   rules: {
     "arrow-parens": ["error", "always"],
     "block-spacing": ["error", "always"],

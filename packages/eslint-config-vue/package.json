@@ -1,6 +1,6 @@
 {
   "name": "@byloth/eslint-config-vue",
-  "version": "2.5.2",
+  "version": "2.6.0",
   "description": "A collection of some common sense linting rules for Vue.js projects. ✔",
   "keywords": [],
   "homepage": "https://github.com/Byloth/eslint-config/tree/master/packages/eslint-config-vue#readme",
@@ -19,9 +19,9 @@
   "license": "Apache-2.0",
   "main": "index.cjs",
   "files": ["index.cjs"],
-  "dependencies": { "@byloth/eslint-config": "^2.5.2" },
+  "dependencies": { "@byloth/eslint-config": "^2.6.0" },
   "peerDependencies": {
-    "eslint-plugin-vue": "^9.9.0",
-    "vue-eslint-parser": "^9.1.0"
+    "eslint-plugin-vue": "^9.15.1",
+    "vue-eslint-parser": "^9.3.1"
   }
 }

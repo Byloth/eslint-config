@@ -3,9 +3,10 @@ const DYNAMIC_LEVEL = process.env.NODE_ENV === "production" ? "error" : "warn";
 module.exports = {
   extends: ["plugin:vue/vue3-recommended"],
   globals: {
-    defineProps: true,
     defineEmits: true,
-    defineExpose: true
+    defineExpose: true,
+    defineModel: true,
+    defineProps: true
   },
   ignorePatterns: ["!**/.vitepress/"],
   plugins: ["vue"],

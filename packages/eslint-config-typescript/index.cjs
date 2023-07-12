@@ -1,14 +1,11 @@
 const DYNAMIC_LEVEL = process.env.NODE_ENV === "production" ? "error" : "warn";
 
 module.exports = {
-  extends: [
-    "plugin:import/typescript",
-    "plugin:@typescript-eslint/recommended"
-  ],
+  extends: ["plugin:@typescript-eslint/recommended"],
   parserOptions: { parser: "@typescript-eslint/parser" },
   plugins: ["@typescript-eslint"],
   rules: {
-    "@typescript-eslint/no-non-null-assertion": "off",
+    "@typescript-eslint/ban-ts-comment": "warn",
     "@typescript-eslint/no-unused-vars": [DYNAMIC_LEVEL, { args: "none" }],
     "@typescript-eslint/no-useless-constructor": "error",
     "@typescript-eslint/semi": ["error"]
@@ -32,7 +29,6 @@ module.exports = {
     {
       files: ["*.ts"],
       rules: {
-        "import/no-unresolved": "off",
         "no-dupe-class-members": "off",
         "no-redeclare": "off",
         "no-unused-vars": "off",
