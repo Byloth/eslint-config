@@ -48,6 +48,7 @@ module.exports = {
     "semi": ["error", "always"],
     "semi-spacing": "error",
     "space-before-function-paren": ["error", { anonymous: "never", named: "never", asyncArrow: "always" }],
+    "space-infix-ops": "error",
     "spaced-comment": "error"
   },
   overrides: [
