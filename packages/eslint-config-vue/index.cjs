@@ -19,7 +19,7 @@ module.exports = {
     "vue/no-unused-components": DYNAMIC_LEVEL,
     "vue/no-unused-vars": DYNAMIC_LEVEL,
     "vue/no-v-model-argument": "off",
-    "vue/script-indent": ["error", 4, { baseIndent: 1 }]
+    "vue/script-indent": ["error", 4, { baseIndent: 1, switchCase: 1 }]
   },
   overrides: [{
     files: ["*.vue"],

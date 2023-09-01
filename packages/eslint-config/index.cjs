@@ -16,7 +16,7 @@ module.exports = {
     "arrow-parens": ["error", "always"],
     "block-spacing": ["error", "always"],
     "brace-style": ["error", "allman", { allowSingleLine: true }],
-    "camelcase": DYNAMIC_LEVEL,
+    "camelcase": [DYNAMIC_LEVEL, { ignoreDestructuring: true, ignoreImports: true, ignoreGlobals: true }],
     "comma-dangle": [DYNAMIC_LEVEL, "never"],
     "comma-spacing": ["error", { "before": false, "after": true }],
     "curly": "error",
