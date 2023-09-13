@@ -1,4 +1,5 @@
 const DYNAMIC_LEVEL = process.env.NODE_ENV === "production" ? "error" : "warn";
+const IGNORED_PATTERN = "^_[a-z]?[0-9]*$";
 
 module.exports = {
   extends: ["eslint:recommended"],
@@ -34,7 +35,10 @@ module.exports = {
     "no-multiple-empty-lines": ["error", { max: 1 }],
     "no-unreachable": DYNAMIC_LEVEL,
     "no-trailing-spaces": "error",
-    "no-unused-vars": [DYNAMIC_LEVEL, { args: "none" }],
+    "no-unused-vars": [DYNAMIC_LEVEL, {
+      "args": "none",
+      "varsIgnorePattern": IGNORED_PATTERN
+    }],
     "no-useless-constructor": "error",
     "no-var": "error",
     "object-curly-spacing": ["error", "always"],

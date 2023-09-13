@@ -1,4 +1,5 @@
 const DYNAMIC_LEVEL = process.env.NODE_ENV === "production" ? "error" : "warn";
+const IGNORED_PATTERN = "^_[a-z]?[0-9]*$";
 
 module.exports = {
   extends: ["plugin:@typescript-eslint/recommended"],
@@ -6,7 +7,10 @@ module.exports = {
   plugins: ["@typescript-eslint"],
   rules: {
     "@typescript-eslint/ban-ts-comment": "warn",
-    "@typescript-eslint/no-unused-vars": [DYNAMIC_LEVEL, { args: "none" }],
+    "@typescript-eslint/no-unused-vars": [DYNAMIC_LEVEL, {
+      "args": "none",
+      "varsIgnorePattern": IGNORED_PATTERN
+    }],
     "@typescript-eslint/no-useless-constructor": "error",
     "@typescript-eslint/semi": ["error"]
   },
