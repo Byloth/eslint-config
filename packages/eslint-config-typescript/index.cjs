@@ -46,6 +46,7 @@ module.exports = {
     {
       files: ["*.d.ts"],
       rules: {
+        "@typescript-eslint/ban-types": "warn",
         "@typescript-eslint/no-explicit-any": "off",
         "@typescript-eslint/no-unused-vars": "off"
       }

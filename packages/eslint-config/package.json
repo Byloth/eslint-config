@@ -1,6 +1,6 @@
 {
   "name": "@byloth/eslint-config",
-  "version": "2.6.4",
+  "version": "2.6.5",
   "description": "A collection of some common sense linting rules for JavaScript projects. ✔",
   "keywords": [],
   "homepage": "https://github.com/Byloth/eslint-config/tree/master/packages/eslint-config#readme",
@@ -13,11 +13,11 @@
   },
   "author": {
     "name": "Matteo Bilotta",
-    "email": "me@byloth.net",
+    "email": "me@byloth.dev",
     "url": "https://www.byloth.dev/"
   },
   "license": "Apache-2.0",
   "main": "index.cjs",
   "files": ["index.cjs"],
-  "peerDependencies": { "eslint": "^8.49.0" }
+  "peerDependencies": { "eslint": "^8.50.0" }
 }
