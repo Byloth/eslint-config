@@ -1,6 +1,6 @@
 {
   "name": "@byloth/eslint-config-typescript",
-  "version": "2.6.5",
+  "version": "2.6.6",
   "description": "A collection of some common sense linting rules for TypeScript projects. ✔",
   "keywords": [],
   "homepage": "https://github.com/Byloth/eslint-config/tree/master/packages/eslint-config-typescript#readme",
@@ -19,10 +19,9 @@
   "license": "Apache-2.0",
   "main": "index.cjs",
   "files": ["index.cjs"],
-  "dependencies": { "@byloth/eslint-config": "^2.6.5" },
+  "dependencies": { "@byloth/eslint-config": "^2.6.6" },
   "peerDependencies": {
-    "@typescript-eslint/eslint-plugin": "^6.7.3",
-    "@typescript-eslint/parser": "^6.7.3",
-    "eslint": "^8.50.0"
+    "@typescript-eslint/eslint-plugin": "^6.8.0",
+    "@typescript-eslint/parser": "^6.8.0"
   }
 }

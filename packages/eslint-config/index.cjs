@@ -33,8 +33,9 @@ module.exports = {
     "no-debugger": DYNAMIC_LEVEL,
     "no-multi-spaces": ["error", { exceptions: { "Property": false } }],
     "no-multiple-empty-lines": ["error", { max: 1 }],
-    "no-unreachable": DYNAMIC_LEVEL,
+    "no-shadow": "error",
     "no-trailing-spaces": "error",
+    "no-unreachable": DYNAMIC_LEVEL,
     "no-unused-vars": [DYNAMIC_LEVEL, {
       "args": "none",
       "varsIgnorePattern": IGNORED_PATTERN
