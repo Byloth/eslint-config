@@ -33,7 +33,7 @@ module.exports = {
     "no-debugger": DYNAMIC_LEVEL,
     "no-multi-spaces": ["error", { exceptions: { "Property": false } }],
     "no-multiple-empty-lines": ["error", { max: 1 }],
-    "no-shadow": "error",
+    "no-shadow": "warn",
     "no-trailing-spaces": "error",
     "no-unreachable": DYNAMIC_LEVEL,
     "no-unused-vars": [DYNAMIC_LEVEL, {

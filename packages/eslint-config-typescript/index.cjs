@@ -7,12 +7,13 @@ module.exports = {
   plugins: ["@typescript-eslint"],
   rules: {
     "@typescript-eslint/ban-ts-comment": "warn",
+    "@typescript-eslint/no-shadow": "warn",
     "@typescript-eslint/no-unused-vars": [DYNAMIC_LEVEL, {
       "args": "none",
       "varsIgnorePattern": IGNORED_PATTERN
     }],
     "@typescript-eslint/no-useless-constructor": "error",
-    "@typescript-eslint/semi": ["error"]
+    "@typescript-eslint/semi": "error"
   },
   overrides: [
     {
@@ -35,6 +36,7 @@ module.exports = {
       rules: {
         "no-dupe-class-members": "off",
         "no-redeclare": "off",
+        "no-shadow": "off",
         "no-unused-vars": "off",
         "semi": "off"
       }
