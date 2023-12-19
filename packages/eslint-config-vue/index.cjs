@@ -18,7 +18,7 @@ module.exports = {
     "vue/max-attributes-per-line": ["error", { multiline: 1, singleline: 2 }],
     "vue/first-attribute-linebreak": ["error", { multiline: "beside", singleline: "beside" }],
     "vue/no-unused-components": DYNAMIC_LEVEL,
-    "vue/no-unused-vars": [DYNAMIC_LEVEL, { "ignorePattern": IGNORED_PATTERN }],
+    "vue/no-unused-vars": [DYNAMIC_LEVEL, { ignorePattern: IGNORED_PATTERN }],
     "vue/no-v-model-argument": "off",
     "vue/script-indent": ["error", 4, { baseIndent: 1, switchCase: 1 }]
   },
