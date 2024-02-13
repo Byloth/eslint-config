@@ -52,6 +52,7 @@ module.exports = {
     "operator-linebreak": ["error", "after"],
     "prefer-const": DYNAMIC_LEVEL,
     "prefer-rest-params": DYNAMIC_LEVEL,
+    "prefer-spread": DYNAMIC_LEVEL,
     "quote-props": ["error", "consistent"],
     "quotes": ["error", "double", { allowTemplateLiterals: true, avoidEscape: true }],
     "semi": ["error", "always"],

@@ -1,8 +1,8 @@
 {
   "name": "@byloth/eslint-config",
-  "version": "2.6.8",
+  "version": "2.7.0",
   "description": "A collection of some common sense linting rules for JavaScript projects. ✔",
-  "keywords": [],
+  "keywords": ["ESLint", "JavaScript", "Linting", "Rules", "Configuration"],
   "homepage": "https://github.com/Byloth/eslint-config/tree/master/packages/eslint-config#readme",
   "repository": {
     "type": "git",

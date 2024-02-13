@@ -1,0 +1,26 @@
+{
+  "name": "@byloth/eslint-config-nuxt",
+  "version": "2.7.0",
+  "description": "A collection of some common sense linting rules for Nuxt.js projects. ✔",
+  "keywords": ["ESLint", "Nuxt.js", "TypeScript", "Linting", "Rules", "Configuration"],
+  "homepage": "https://github.com/Byloth/eslint-config/tree/master/packages/eslint-config-nuxt#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Byloth/eslint-config.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Byloth/eslint-config/issues"
+  },
+  "author": {
+    "name": "Matteo Bilotta",
+    "email": "me@byloth.dev",
+    "url": "https://www.byloth.dev/"
+  },
+  "license": "Apache-2.0",
+  "main": "index.cjs",
+  "files": ["index.cjs"],
+  "dependencies": {
+    "@byloth/eslint-config-typescript": "^2.7.0",
+    "@byloth/eslint-config-vue": "^2.7.0"
+  }
+}
