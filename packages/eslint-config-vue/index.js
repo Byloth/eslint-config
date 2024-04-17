@@ -1,7 +1,7 @@
 const DYNAMIC_LEVEL = process.env.NODE_ENV === "production" ? "error" : "warn";
 const IGNORED_PATTERN = "^_[a-z]?[0-9]*$";
 
-module.exports = {
+export default {
   extends: ["plugin:vue/vue3-recommended"],
   globals: {
     defineEmits: true,
