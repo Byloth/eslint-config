@@ -37,6 +37,7 @@ module.exports = {
         "no-dupe-class-members": "off",
         "no-redeclare": "off",
         "no-shadow": "off",
+        "no-useless-constructor": "off",
         "no-unused-vars": "off",
         "semi": "off"
       }
