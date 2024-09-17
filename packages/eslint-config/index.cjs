@@ -50,7 +50,7 @@ module.exports = {
     "object-shorthand": ["error", "consistent"],
     "one-var": ["error", "never"],
     "operator-linebreak": ["error", "after"],
-    "prefer-const": DYNAMIC_LEVEL,
+    "prefer-const": [DYNAMIC_LEVEL, { destructuring: "all" }],
     "prefer-rest-params": DYNAMIC_LEVEL,
     "prefer-spread": DYNAMIC_LEVEL,
     "quote-props": ["error", "consistent"],
