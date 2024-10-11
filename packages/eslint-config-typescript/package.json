@@ -1,8 +1,14 @@
 {
   "name": "@byloth/eslint-config-typescript",
-  "version": "2.8.3",
+  "version": "3.0.0",
   "description": "A collection of some common sense linting rules for TypeScript projects. ✔",
-  "keywords": ["ESLint", "TypeScript", "Linting", "Rules", "Configuration"],
+  "keywords": [
+    "ESLint",
+    "TypeScript",
+    "Linting",
+    "Rules",
+    "Configuration"
+  ],
   "homepage": "https://github.com/Byloth/eslint-config/tree/master/packages/eslint-config-typescript#readme",
   "repository": {
     "type": "git",
@@ -17,11 +23,20 @@
     "url": "https://www.byloth.dev/"
   },
   "license": "Apache-2.0",
-  "main": "index.cjs",
-  "files": ["index.cjs"],
-  "dependencies": { "@byloth/eslint-config": "2.8.3" },
-  "peerDependencies": {
-    "@typescript-eslint/eslint-plugin": "^7.18.0",
-    "@typescript-eslint/parser": "^7.18.0"
-  }
+  "type": "module",
+  "files": [
+    "index.mjs",
+    "index.d.ts"
+  ],
+  "main": "index.mjs",
+  "types": "index.d.ts",
+  "dependencies": {
+    "@byloth/eslint-config": "3.0.0",
+    "@typescript-eslint/eslint-plugin": "^8.8.1",
+    "@typescript-eslint/parser": "^8.8.1"
+  },
+  "devDependencies": {
+    "@types/eslint__eslintrc": "^2.1.2"
+  },
+  "packageManager": "pnpm@9.12.1+sha512.e5a7e52a4183a02d5931057f7a0dbff9d5e9ce3161e33fa68ae392125b79282a8a8a470a51dfc8a0ed86221442eb2fb57019b0990ed24fab519bf0e1bc5ccfc4"
 }

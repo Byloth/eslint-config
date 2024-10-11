@@ -1,1 +1,23 @@
+# Files created by OS
+#
+.DS_Store
+Desktop.ini
+
+# Files created by IDE
+#
+/.idea/
+/.vscode/
+
 /*.code-workspace
+
+# Downloadable & installable modules & components
+#
+node_modules/
+
+# Environmental files
+#
+.env
+
+# Not ignored
+#
+!.gitkeep
