@@ -20,7 +20,9 @@ export default [...eslintJs, ...compat.extends("plugin:@typescript-eslint/strict
   },
   rules: {
     "@typescript-eslint/ban-ts-comment": "warn",
+    "@typescript-eslint/no-non-null-assertion": "off",
     "@typescript-eslint/no-shadow": DYNAMIC_LEVEL,
+    "@typescript-eslint/unified-signatures": "warn",
     "@typescript-eslint/no-unused-vars": [DYNAMIC_LEVEL, {
       args: "none",
       varsIgnorePattern: "^_[a-z]?[0-9]*$"

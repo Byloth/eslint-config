@@ -18,6 +18,10 @@ node_modules/
 #
 .env
 
+# Generated files
+#
+pnpm-lock.yaml
+
 # Not ignored
 #
 !.gitkeep
