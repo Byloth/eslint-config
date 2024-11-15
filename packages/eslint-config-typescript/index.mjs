@@ -19,10 +19,10 @@ export default [...eslintJs, ...compat.extends("plugin:@typescript-eslint/strict
     parserOptions: { parser: "@typescript-eslint/parser" }
   },
   rules: {
-    "@typescript-eslint/ban-ts-comment": "warn",
+    "@typescript-eslint/ban-ts-comment": DYNAMIC_LEVEL,
     "@typescript-eslint/no-non-null-assertion": "off",
     "@typescript-eslint/no-shadow": DYNAMIC_LEVEL,
-    "@typescript-eslint/unified-signatures": "warn",
+    "@typescript-eslint/unified-signatures": "off",
     "@typescript-eslint/no-unused-vars": [DYNAMIC_LEVEL, {
       args: "none",
       varsIgnorePattern: "^_[a-z]?[0-9]*$"
@@ -55,7 +55,7 @@ export default [...eslintJs, ...compat.extends("plugin:@typescript-eslint/strict
   files: ["**/*.d.ts"],
   rules: {
     "@typescript-eslint/no-explicit-any": "off",
-    "@typescript-eslint/no-restricted-types": "warn",
+    "@typescript-eslint/no-restricted-types": "off",
     "@typescript-eslint/no-unused-vars": "off"
   }
 }, {
