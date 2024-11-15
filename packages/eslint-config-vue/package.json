@@ -1,6 +1,6 @@
 {
   "name": "@byloth/eslint-config-vue",
-  "version": "3.0.2",
+  "version": "3.0.3",
   "description": "A collection of some common sense linting rules for Vue.js projects. ✔",
   "keywords": [
     "ESLint",
@@ -31,7 +31,7 @@
   "main": "index.mjs",
   "types": "index.d.ts",
   "dependencies": {
-    "@byloth/eslint-config": "3.0.2",
+    "@byloth/eslint-config": "3.0.3",
     "eslint-plugin-vue": "^9.31.0",
     "vue-eslint-parser": "^9.4.3"
   },

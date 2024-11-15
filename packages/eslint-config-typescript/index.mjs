@@ -20,14 +20,15 @@ export default [...eslintJs, ...compat.extends("plugin:@typescript-eslint/strict
   },
   rules: {
     "@typescript-eslint/ban-ts-comment": DYNAMIC_LEVEL,
+    "@typescript-eslint/no-invalid-void-type": "off",
     "@typescript-eslint/no-non-null-assertion": "off",
     "@typescript-eslint/no-shadow": DYNAMIC_LEVEL,
-    "@typescript-eslint/unified-signatures": "off",
     "@typescript-eslint/no-unused-vars": [DYNAMIC_LEVEL, {
       args: "none",
       varsIgnorePattern: "^_[a-z]?[0-9]*$"
     }],
-    "@typescript-eslint/no-useless-constructor": "error"
+    "@typescript-eslint/no-useless-constructor": "error",
+    "@typescript-eslint/unified-signatures": "off"
   }
 }, {
   files: ["**/*.js"],
