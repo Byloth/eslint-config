@@ -78,7 +78,7 @@ export default [eslintJs.configs["recommended"], {
     "spaced-comment": "error"
   }
 }, {
-  files: ["**/.babelrc", "**/.eslintrc.*", "**/config.js", "**/*.config.js"],
+  files: ["**/.babelrc", "**/.eslintrc.*", "**/*.config.cjs", "**/*.config.js", "**/*.config.mjs"],
   rules: { "indent": ["error", 2, { SwitchCase: 1 }] }
 }, {
   files: ["**/*.json"],

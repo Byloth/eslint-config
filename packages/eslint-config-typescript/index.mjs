@@ -31,7 +31,7 @@ export default [...eslintJs, ...compat.extends("plugin:@typescript-eslint/strict
     "@typescript-eslint/unified-signatures": "off"
   }
 }, {
-  files: ["**/*.js"],
+  files: ["**/*.cjs", "**/*.js", "**/*.mjs"],
   rules: {
     "@typescript-eslint/explicit-module-boundary-types": "off",
     "@typescript-eslint/no-unused-vars": "off",
@@ -41,7 +41,7 @@ export default [...eslintJs, ...compat.extends("plugin:@typescript-eslint/strict
   files: ["**/.babelrc"],
   rules: { "@typescript-eslint/no-var-requires": "off" }
 }, {
-  files: ["**/*.ts"],
+  files: ["**/*.ts", "**/*.mts"],
   rules: {
     "no-dupe-class-members": "off",
     "no-redeclare": "off",
@@ -50,7 +50,7 @@ export default [...eslintJs, ...compat.extends("plugin:@typescript-eslint/strict
     "no-unused-vars": "off"
   }
 }, {
-  files: ["**/config.ts", "**/*.config.ts"],
+  files: ["**/*.config.ts", "**/*.config.mts"],
   rules: { "indent": ["error", 2, { SwitchCase: 1 }] }
 }, {
   files: ["**/*.d.ts"],
