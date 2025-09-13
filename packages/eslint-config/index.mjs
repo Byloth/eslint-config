@@ -63,6 +63,10 @@ export default [eslintJs.configs.recommended, stylistic.configs.recommended, {
     "@stylistic/lines-between-class-members": "off",
     "@stylistic/max-len": ["error", { code: 120 }],
     "@stylistic/max-statements-per-line": ["error", { max: 2 }],
+    "@stylistic/member-delimiter-style": ["error", {
+      multiline: { delimiter: "semi" },
+      singleline: { delimiter: "comma", requireLast: false }
+    }],
     "@stylistic/newline-per-chained-call": ["error", { ignoreChainWithDepth: 2 }],
     "@stylistic/no-multi-spaces": ["error", {
       exceptions: { Property: false }
