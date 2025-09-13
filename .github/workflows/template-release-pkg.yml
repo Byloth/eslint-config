@@ -33,12 +33,14 @@ jobs:
 
       - if: ${{ github.event.release.prerelease == true }}
         name: Publishing pre-release package
+        working-directory: ./packages/${{ inputs.package-name }}
         run: npm publish --access public --tag next
         env:
           NODE_AUTH_TOKEN: ${{ secrets.AUTH_TOKEN }}
 
       - if: ${{ github.event.release.prerelease == false }}
         name: Publishing latest package
+        working-directory: ./packages/${{ inputs.package-name }}
         run: npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.AUTH_TOKEN }}
