@@ -1,6 +1,6 @@
 {
   "name": "@byloth/eslint-config",
-  "version": "3.2.0-rc.1",
+  "version": "3.2.0",
   "description": "A collection of some common sense linting rules for JavaScript projects. ✔",
   "keywords": [
     "ESLint",

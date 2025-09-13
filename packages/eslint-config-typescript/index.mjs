@@ -1,9 +1,19 @@
 import eslintJs from "@byloth/eslint-config";
 import eslintTs from "@typescript-eslint/eslint-plugin";
 
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+
+import { FlatCompat } from "@eslint/eslintrc";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+const compat = new FlatCompat({ baseDirectory: __dirname });
+
 const DYNAMIC_LEVEL = process.env.NODE_ENV === "production" ? "error" : "warn";
 
-export default [...eslintJs, eslintTs.configs.strict, eslintTs.configs.stylistic, {
+export default [...eslintJs, ...compat.extends("plugin:@typescript-eslint/strict", "plugin:@typescript-eslint/stylistic"), {
   plugins: { "@typescript-eslint": eslintTs },
   languageOptions: {
     parserOptions: { parser: "@typescript-eslint/parser" }
@@ -44,7 +54,7 @@ export default [...eslintJs, eslintTs.configs.strict, eslintTs.configs.stylistic
   }
 }, {
   files: ["**/*.config.ts", "**/*.config.mts"],
-  rules: { "indent": ["error", 2, { SwitchCase: 1 }] }
+  rules: { "@stylistic/indent": ["error", 2, { SwitchCase: 1 }] }
 }, {
   files: ["**/*.d.ts"],
   rules: {

@@ -25,42 +25,17 @@ export default [...eslintTs, ...eslintVue, {
     "no-undef": "off",
     "no-unreachable": "off",
     "no-unsafe-negation": "off",
-    "no-with": "off"
-  }
-}, {
-  files: ["**/*.vue"],
-  rules: {
+    "no-with": "off",
+
     "vue/multiline-html-element-content-newline": ["error", {
       ignoreWhenEmpty: true,
-      ignores: [
-        "pre",
-        "textarea",
-        "router-link",
-        "RouterLink",
-        "nuxt-link",
-        "NuxtLink",
-        "u-link",
-        "ULink",
-
-        ...INLINE_ELEMENTS
-      ],
+      ignores: ["pre", "textarea", "router-link", "RouterLink", "nuxt-link", "NuxtLink", "u-link", "ULink", ...INLINE_ELEMENTS],
       allowEmptyLines: false
     }],
     "vue/singleline-html-element-content-newline": ["error", {
       ignoreWhenNoAttributes: true,
       ignoreWhenEmpty: true,
-      ignores: [
-        "pre",
-        "textarea",
-        "router-link",
-        "RouterLink",
-        "nuxt-link",
-        "NuxtLink",
-        "u-link",
-        "ULink",
-
-        ...INLINE_ELEMENTS
-      ],
+      ignores: ["pre", "textarea", "router-link", "RouterLink", "nuxt-link", "NuxtLink", "u-link", "ULink", ...INLINE_ELEMENTS],
       externalIgnores: []
     }],
   }

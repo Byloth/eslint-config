@@ -51,7 +51,7 @@ export const INLINE_ELEMENTS = [
   "video"
 ];
 
-export default [...compat.extends("plugin:vue/vue3-recommended"), {
+export default [...compat.extends("plugin:vue/recommended"), {
   ignores: ["!**/.vitepress/"],
   languageOptions: {
     globals: {
@@ -65,9 +65,8 @@ export default [...compat.extends("plugin:vue/vue3-recommended"), {
   plugins: { "vue": eslintVue },
   rules: {
     "vue/array-bracket-spacing": "error",
-    "vue/arrow-parens": "error",
     "vue/arrow-spacing": "error",
-    "vue/block-order": ["error", ["script", "template", "style"]],
+    "vue/block-order": ["error", { order: ["script", "template", "style"] }],
     "vue/block-spacing": "error",
     "vue/block-tag-newline": ["error", {
       multiline: "always",
@@ -105,7 +104,7 @@ export default [...compat.extends("plugin:vue/vue3-recommended"), {
       allowEmptyLines: false
     }],
     "vue/no-unused-components": DYNAMIC_LEVEL,
-    "vue/no-unused-vars": [DYNAMIC_LEVEL, { ignorePattern: "^_[a-z]?[0-9]*$" }],
+    "vue/no-unused-vars": [DYNAMIC_LEVEL, { ignorePattern: "^_" }],
     "vue/no-v-model-argument": "off",
     "vue/object-curly-spacing": ["error", "always"],
     "vue/object-property-newline": ["error", { allowAllPropertiesOnSameLine: true }],
@@ -128,7 +127,7 @@ export default [...compat.extends("plugin:vue/vue3-recommended"), {
 }, {
   files: ["**/*.vue"],
   rules: {
-    "indent": "off",
+    "@stylistic/indent": "off",
     "no-unused-vars": "off"
   }
 }];

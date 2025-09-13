@@ -15,6 +15,7 @@ export default [eslintJs.configs.recommended, stylistic.configs.recommended, {
     },
     sourceType: "module"
   },
+  plugins: { "@stylistic": stylistic },
   rules: {
     "camelcase": [DYNAMIC_LEVEL, {
       ignoreDestructuring: true,
@@ -38,11 +39,8 @@ export default [eslintJs.configs.recommended, stylistic.configs.recommended, {
     "one-var": ["error", "never"],
     "prefer-const": [DYNAMIC_LEVEL, { destructuring: "all" }],
     "prefer-rest-params": DYNAMIC_LEVEL,
-    "prefer-spread": DYNAMIC_LEVEL
-  }
-}, {
-  plugins: { "@stylistic": stylistic },
-  rules: {
+    "prefer-spread": DYNAMIC_LEVEL,
+
     "@stylistic/array-bracket-spacing": "error",
     "@stylistic/arrow-parens": ["error", "always"],
     "@stylistic/arrow-spacing": "error",
@@ -64,6 +62,7 @@ export default [eslintJs.configs.recommended, stylistic.configs.recommended, {
     "@stylistic/keyword-spacing": "error",
     "@stylistic/lines-between-class-members": "off",
     "@stylistic/max-len": ["error", { code: 120 }],
+    "@stylistic/max-statements-per-line": ["error", { max: 2 }],
     "@stylistic/newline-per-chained-call": ["error", { ignoreChainWithDepth: 2 }],
     "@stylistic/no-multi-spaces": ["error", {
       exceptions: { Property: false }
@@ -75,7 +74,7 @@ export default [eslintJs.configs.recommended, stylistic.configs.recommended, {
     "@stylistic/operator-linebreak": ["error", "after"],
     "@stylistic/quote-props": ["error", "consistent"],
     "@stylistic/quotes": ["error", "double", {
-      allowTemplateLiterals: true,
+      allowTemplateLiterals: "avoidEscape",
       avoidEscape: true
     }],
     "@stylistic/semi": ["error", "always"],
@@ -92,13 +91,14 @@ export default [eslintJs.configs.recommended, stylistic.configs.recommended, {
   }
 }, {
   files: ["**/.babelrc", "**/.eslintrc.*", "**/*.config.cjs", "**/*.config.js", "**/*.config.mjs"],
-  rules: { "indent": ["error", 2, { SwitchCase: 1 }] }
+  rules: { "@stylistic/indent": ["error", 2, { SwitchCase: 1 }] }
 }, {
   files: ["**/*.json"],
   rules: {
-    "indent": ["error", 2],
-    "max-len": "off",
     "no-unused-expressions": "off",
-    "semi": ["error", "never"]
+
+    "@stylistic/indent": ["error", 2],
+    "@stylistic/max-len": "off",
+    "@stylistic/semi": ["error", "never"]
   }
 }];
