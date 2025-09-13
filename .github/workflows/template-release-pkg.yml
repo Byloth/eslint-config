@@ -20,20 +20,25 @@ jobs:
     name: Release
     runs-on: ubuntu-latest
     permissions:
-      contents: read
       packages: write
 
     steps:
-      - name: Source code clone
-        uses: actions/checkout@v4
-      - name: Node.js 18 (LTS) setup
-        uses: actions/setup-node@v4
+      - name: Cloning source code
+        uses: actions/checkout@v5
+      - name: Configuring Node.js 22 (LTS)
+        uses: actions/setup-node@v5
         with:
-          node-version: 20
+          node-version: 22
           registry-url: ${{ inputs.registry-url }}
 
-      - name: Package release
-        working-directory: ./packages/${{ inputs.package-name }}
+      - if: ${{ github.event.release.prerelease == true }}
+        name: Publishing pre-release package
+        run: npm publish --access public --tag next
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.AUTH_TOKEN }}
+
+      - if: ${{ github.event.release.prerelease == false }}
+        name: Publishing latest package
         run: npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.AUTH_TOKEN }}

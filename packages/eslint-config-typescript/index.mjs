@@ -1,31 +1,24 @@
 import eslintJs from "@byloth/eslint-config";
 import eslintTs from "@typescript-eslint/eslint-plugin";
 
-import path from "node:path";
-import { fileURLToPath } from "node:url";
-
-import { FlatCompat } from "@eslint/eslintrc";
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
-const compat = new FlatCompat({ baseDirectory: __dirname });
-
 const DYNAMIC_LEVEL = process.env.NODE_ENV === "production" ? "error" : "warn";
 
-export default [...eslintJs, ...compat.extends("plugin:@typescript-eslint/strict", "plugin:@typescript-eslint/stylistic"), {
+export default [...eslintJs, eslintTs.configs.strict, eslintTs.configs.stylistic, {
   plugins: { "@typescript-eslint": eslintTs },
   languageOptions: {
     parserOptions: { parser: "@typescript-eslint/parser" }
   },
   rules: {
     "@typescript-eslint/ban-ts-comment": DYNAMIC_LEVEL,
+    "@typescript-eslint/consistent-type-imports": "error",
+    "@typescript-eslint/no-import-type-side-effects": "error",
     "@typescript-eslint/no-invalid-void-type": "off",
     "@typescript-eslint/no-non-null-assertion": "off",
     "@typescript-eslint/no-shadow": DYNAMIC_LEVEL,
     "@typescript-eslint/no-unused-vars": [DYNAMIC_LEVEL, {
       args: "none",
-      varsIgnorePattern: "^_[a-z]?[0-9]*$"
+      ignoreRestSiblings: true,
+      varsIgnorePattern: "^_"
     }],
     "@typescript-eslint/no-useless-constructor": "error",
     "@typescript-eslint/unified-signatures": "off"

@@ -1,6 +1,6 @@
 {
   "name": "@byloth/eslint-config",
-  "version": "3.1.0",
+  "version": "3.2.0-rc.1",
   "description": "A collection of some common sense linting rules for JavaScript projects. ✔",
   "keywords": [
     "ESLint",
@@ -31,11 +31,9 @@
   "main": "index.mjs",
   "types": "index.d.ts",
   "dependencies": {
-    "@eslint/js": "^9.19.0",
-    "eslint": "^9.19.0",
-    "globals": "^15.14.0"
-  },
-  "devDependencies": {
-    "@types/eslint__js": "8.42.3"
+    "@eslint/js": "^9.35.0",
+    "@stylistic/eslint-plugin": "^5.3.1",
+    "eslint": "^9.35.0",
+    "globals": "^16.4.0"
   }
 }

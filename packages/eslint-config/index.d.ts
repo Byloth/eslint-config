@@ -1,3 +1,3 @@
 import type { Linter } from "eslint";
 
-export default Readonly<Linter.RulesRecord>[];
+export default Array<Linter.Config>;
