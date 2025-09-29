@@ -127,7 +127,8 @@ export default [...compat.extends("plugin:vue/recommended"), {
 }, {
   files: ["**/*.vue"],
   rules: {
+    "no-unused-vars": "off",
     "@stylistic/indent": "off",
-    "no-unused-vars": "off"
+    "@stylistic/indent-binary-ops": "off"
   }
 }];

@@ -54,7 +54,10 @@ export default [...eslintJs, ...compat.extends("plugin:@typescript-eslint/strict
   }
 }, {
   files: ["**/*.config.ts", "**/*.config.mts"],
-  rules: { "@stylistic/indent": ["error", 2, { SwitchCase: 1 }] }
+  rules: {
+    "@stylistic/indent": ["error", 2, { SwitchCase: 1 }],
+    "@stylistic/indent-binary-ops": ["error", 2]
+  }
 }, {
   files: ["**/*.d.ts"],
   rules: {

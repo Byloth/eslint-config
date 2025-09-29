@@ -58,6 +58,7 @@ export default [eslintJs.configs.recommended, stylistic.configs.recommended, {
       method: "before"
     }],
     "@stylistic/indent": ["error", 4, { SwitchCase: 1 }],
+    "@stylistic/indent-binary-ops": ["error", 4],
     "@stylistic/key-spacing": "error",
     "@stylistic/keyword-spacing": "error",
     "@stylistic/lines-between-class-members": "off",
@@ -72,7 +73,7 @@ export default [eslintJs.configs.recommended, stylistic.configs.recommended, {
       exceptions: { Property: false }
     }],
     "@stylistic/no-multiple-empty-lines": ["error", { max: 1 }],
-    "@stylistic/no-trailing-spaces": "error",
+    "@stylistic/no-trailing-spaces": ["error", { "ignoreComments": true }],
     "@stylistic/object-curly-spacing": ["error", "always"],
     "@stylistic/object-property-newline": ["error", { allowAllPropertiesOnSameLine: true }],
     "@stylistic/operator-linebreak": ["error", "after"],
@@ -95,13 +96,17 @@ export default [eslintJs.configs.recommended, stylistic.configs.recommended, {
   }
 }, {
   files: ["**/.babelrc", "**/.eslintrc.*", "**/*.config.cjs", "**/*.config.js", "**/*.config.mjs"],
-  rules: { "@stylistic/indent": ["error", 2, { SwitchCase: 1 }] }
+  rules: {
+    "@stylistic/indent": ["error", 2, { SwitchCase: 1 }],
+    "@stylistic/indent-binary-ops": ["error", 2]
+  }
 }, {
   files: ["**/*.json"],
   rules: {
     "no-unused-expressions": "off",
 
     "@stylistic/indent": ["error", 2],
+    "@stylistic/indent-binary-ops": ["error", 2],
     "@stylistic/max-len": "off",
     "@stylistic/semi": ["error", "never"]
   }
