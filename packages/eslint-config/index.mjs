@@ -2,6 +2,8 @@ import eslintJs from "@eslint/js";
 import stylistic from "@stylistic/eslint-plugin";
 import globals from "globals";
 
+import byloth from "./plugins/byloth.mjs";
+
 const DYNAMIC_LEVEL = (process.env.NODE_ENV === "production") ? "error" : "warn";
 
 export default [eslintJs.configs.recommended, stylistic.configs.recommended, {
@@ -15,7 +17,10 @@ export default [eslintJs.configs.recommended, stylistic.configs.recommended, {
     },
     sourceType: "module"
   },
-  plugins: { "@stylistic": stylistic },
+  plugins: {
+    "@byloth": byloth,
+    "@stylistic": stylistic
+  },
   rules: {
     "camelcase": [DYNAMIC_LEVEL, {
       ignoreDestructuring: true,
@@ -77,6 +82,7 @@ export default [eslintJs.configs.recommended, stylistic.configs.recommended, {
     "@stylistic/object-curly-spacing": ["error", "always"],
     "@stylistic/object-property-newline": ["error", { allowAllPropertiesOnSameLine: true }],
     "@stylistic/operator-linebreak": ["error", "after"],
+    "@stylistic/padded-blocks": "off", // Disabled in favor of `@byloth/padded-blocks`.
     "@stylistic/quote-props": ["error", "consistent"],
     "@stylistic/quotes": ["error", "double", {
       allowTemplateLiterals: "avoidEscape",
@@ -92,7 +98,9 @@ export default [eslintJs.configs.recommended, stylistic.configs.recommended, {
     "@stylistic/space-infix-ops": "error",
     "@stylistic/space-in-parens": "error",
     "@stylistic/spaced-comment": "error",
-    "@stylistic/template-curly-spacing": "error"
+    "@stylistic/template-curly-spacing": "error",
+
+    "@byloth/padded-blocks": "error"
   }
 }, {
   files: ["**/.babelrc", "**/.eslintrc.*", "**/*.config.cjs", "**/*.config.js", "**/*.config.mjs"],
