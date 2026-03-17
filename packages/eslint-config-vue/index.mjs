@@ -1,15 +1,6 @@
-import path from "node:path";
-import { fileURLToPath } from "node:url";
-
-import { FlatCompat } from "@eslint/eslintrc";
 import eslintVue from "eslint-plugin-vue";
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
-const compat = new FlatCompat({ baseDirectory: __dirname });
-
-const DYNAMIC_LEVEL = process.env.NODE_ENV === "production" ? "error" : "warn";
+const DYNAMIC_LEVEL = (process.env.NODE_ENV === "production") ? "error" : "warn";
 export const INLINE_ELEMENTS = [
   "a",
   "abbr",
@@ -51,7 +42,7 @@ export const INLINE_ELEMENTS = [
   "video"
 ];
 
-export default [...compat.extends("plugin:vue/recommended"), {
+export default [...eslintVue.configs["flat/recommended"], {
   ignores: ["!**/.vitepress/"],
   languageOptions: {
     globals: {

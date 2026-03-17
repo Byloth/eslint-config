@@ -2,7 +2,7 @@ import eslintJs from "@eslint/js";
 import stylistic from "@stylistic/eslint-plugin";
 import globals from "globals";
 
-const DYNAMIC_LEVEL = process.env.NODE_ENV === "production" ? "error" : "warn";
+const DYNAMIC_LEVEL = (process.env.NODE_ENV === "production") ? "error" : "warn";
 
 export default [eslintJs.configs.recommended, stylistic.configs.recommended, {
   languageOptions: {

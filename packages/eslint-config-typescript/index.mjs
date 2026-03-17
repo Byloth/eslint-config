@@ -1,23 +1,17 @@
 import eslintJs from "@byloth/eslint-config";
 import eslintTs from "@typescript-eslint/eslint-plugin";
+import eslintImport from "eslint-plugin-import";
 
-import path from "node:path";
-import { fileURLToPath } from "node:url";
+const DYNAMIC_LEVEL = (process.env.NODE_ENV === "production") ? "error" : "warn";
 
-import { FlatCompat } from "@eslint/eslintrc";
+const flatStylisticRules = eslintTs.configs["flat/stylistic"]
+  .find(({ name }) => (name === "typescript-eslint/stylistic"));
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const tsParser = eslintTs.configs["flat/strict"]
+  .find(({ name }) => (name === "typescript-eslint/base")).languageOptions.parser;
 
-const compat = new FlatCompat({ baseDirectory: __dirname });
-
-const DYNAMIC_LEVEL = process.env.NODE_ENV === "production" ? "error" : "warn";
-
-export default [...eslintJs, ...compat.extends("plugin:@typescript-eslint/strict", "plugin:@typescript-eslint/stylistic"), {
-  plugins: { "@typescript-eslint": eslintTs },
-  languageOptions: {
-    parserOptions: { parser: "@typescript-eslint/parser" }
-  },
+export default [...eslintJs, ...eslintTs.configs["flat/strict"], flatStylisticRules, {
+  plugins: { import: eslintImport },
   rules: {
     "@typescript-eslint/ban-ts-comment": DYNAMIC_LEVEL,
     "@typescript-eslint/consistent-type-imports": "error",
@@ -31,7 +25,9 @@ export default [...eslintJs, ...compat.extends("plugin:@typescript-eslint/strict
       varsIgnorePattern: "^_"
     }],
     "@typescript-eslint/no-useless-constructor": "error",
-    "@typescript-eslint/unified-signatures": "off"
+    "@typescript-eslint/unified-signatures": "off",
+
+    "import/consistent-type-specifier-style": ["error", "prefer-top-level"]
   }
 }, {
   files: ["**/*.cjs", "**/*.js", "**/*.mjs"],
@@ -51,6 +47,11 @@ export default [...eslintJs, ...compat.extends("plugin:@typescript-eslint/strict
     "no-shadow": "off",
     "no-useless-constructor": "off",
     "no-unused-vars": "off"
+  }
+}, {
+  files: ["**/*.vue"],
+  languageOptions: {
+    parserOptions: { parser: tsParser }
   }
 }, {
   files: ["**/*.config.ts", "**/*.config.mts"],
