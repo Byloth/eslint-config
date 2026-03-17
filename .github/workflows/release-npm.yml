@@ -3,9 +3,105 @@ on:
   release:
     types: [published]
 
+permissions:
+  contents: read
+  id-token: write
+
 jobs:
-  npm:
-    name: NPM
-    uses: ./.github/workflows/template-release-all.yml
-    secrets:
-      AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+  eslint-config:
+    name: "`eslint-config`"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cloning source code
+        uses: actions/checkout@v6
+      - name: Configuring Node.js 24 (LTS)
+        uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          registry-url: https://registry.npmjs.org/
+
+      - name: Updating npm to the latest version
+        run: npm install -g npm@latest
+      - if: ${{ github.event.release.prerelease == true }}
+        name: Publishing pre-release package
+        working-directory: ./packages/eslint-config
+        run: npm publish --access public --tag next
+      - if: ${{ github.event.release.prerelease == false }}
+        name: Publishing latest package
+        working-directory: ./packages/eslint-config
+        run: npm publish --access public
+
+  eslint-config-typescript:
+    name: "`eslint-config-typescript`"
+    needs: eslint-config
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cloning source code
+        uses: actions/checkout@v6
+      - name: Configuring Node.js 24 (LTS)
+        uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          registry-url: https://registry.npmjs.org/
+
+      - name: Updating npm to the latest version
+        run: npm install -g npm@latest
+      - if: ${{ github.event.release.prerelease == true }}
+        name: Publishing pre-release package
+        working-directory: ./packages/eslint-config-typescript
+        run: npm publish --access public --tag next
+      - if: ${{ github.event.release.prerelease == false }}
+        name: Publishing latest package
+        working-directory: ./packages/eslint-config-typescript
+        run: npm publish --access public
+
+  eslint-config-vue:
+    name: "`eslint-config-vue`"
+    needs: eslint-config
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cloning source code
+        uses: actions/checkout@v6
+      - name: Configuring Node.js 24 (LTS)
+        uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          registry-url: https://registry.npmjs.org/
+
+      - name: Updating npm to the latest version
+        run: npm install -g npm@latest
+      - if: ${{ github.event.release.prerelease == true }}
+        name: Publishing pre-release package
+        working-directory: ./packages/eslint-config-vue
+        run: npm publish --access public --tag next
+      - if: ${{ github.event.release.prerelease == false }}
+        name: Publishing latest package
+        working-directory: ./packages/eslint-config-vue
+        run: npm publish --access public
+
+  eslint-config-nuxt:
+    name: "`eslint-config-nuxt`"
+    needs:
+      - eslint-config-typescript
+      - eslint-config-vue
+
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cloning source code
+        uses: actions/checkout@v6
+      - name: Configuring Node.js 24 (LTS)
+        uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          registry-url: https://registry.npmjs.org/
+
+      - name: Updating npm to the latest version
+        run: npm install -g npm@latest
+      - if: ${{ github.event.release.prerelease == true }}
+        name: Publishing pre-release package
+        working-directory: ./packages/eslint-config-nuxt
+        run: npm publish --access public --tag next
+      - if: ${{ github.event.release.prerelease == false }}
+        name: Publishing latest package
+        working-directory: ./packages/eslint-config-nuxt
+        run: npm publish --access public
