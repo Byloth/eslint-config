@@ -48,6 +48,36 @@ const bylothPlugin = {
           return ((firstContentToken.loc.start.line - openingBrace.loc.end.line) > 1);
         };
 
+        const getLineEndColumn = (lineNumber) =>
+        {
+          return (sourceCode.lines[lineNumber - 1] ?? "").length;
+        };
+        const getExtraBlankLinesLocation = (startLine, endLine) =>
+        {
+          if (startLine > endLine) { return null; }
+
+          return {
+            end: { column: getLineEndColumn(endLine), line: endLine },
+            start: { column: 0, line: startLine }
+          };
+        };
+        const getUnexpectedBlankLineAfterOpenLocation = ({ openingBrace, firstContentToken }) =>
+        {
+          return getExtraBlankLinesLocation((openingBrace.loc.end.line + 1), (firstContentToken.loc.start.line - 1));
+        };
+        const getBlankLineBeforeCloseLocation = ({ closingBrace, lastContentToken }, requireBlankLine) =>
+        {
+          if (requireBlankLine)
+          {
+            return {
+              end: { ...closingBrace.loc.start },
+              start: { column: 0, line: closingBrace.loc.start.line }
+            };
+          }
+
+          return getExtraBlankLinesLocation((lastContentToken.loc.end.line + 1), (closingBrace.loc.start.line - 1));
+        };
+
         const isCallbackWithTrailingArguments = (node) =>
         {
           const { parent } = node;
@@ -86,11 +116,13 @@ const bylothPlugin = {
 
           if (hasBlankLineAfterOpeningBrace(tokens))
           {
+            const location = getUnexpectedBlankLineAfterOpenLocation(tokens);
+
             context.report({
               fix: fixNoBlankLineAfterOpeningBrace(tokens),
+              loc: location,
 
-              messageId: "unexpectedBlankLineAfterOpen",
-              node: node
+              messageId: "unexpectedBlankLineAfterOpen"
             });
           }
 
@@ -102,20 +134,24 @@ const bylothPlugin = {
 
           if ((mustHaveBlankLineBeforeClose) && !(hasTrailingBlankLine))
           {
+            const location = getBlankLineBeforeCloseLocation(tokens, true);
+
             context.report({
               fix: fixBlankLineBeforeClosingBrace(tokens, true),
+              loc: location,
 
-              messageId: "missingBlankLineBeforeClose",
-              node: node
+              messageId: "missingBlankLineBeforeClose"
             });
           }
           else if (!(mustHaveBlankLineBeforeClose) && (hasTrailingBlankLine))
           {
+            const location = getBlankLineBeforeCloseLocation(tokens, false);
+
             context.report({
               fix: fixBlankLineBeforeClosingBrace(tokens, false),
+              loc: location,
 
-              messageId: "unexpectedBlankLineBeforeClose",
-              node: node
+              messageId: "unexpectedBlankLineBeforeClose"
             });
           }
         };
