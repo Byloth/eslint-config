@@ -4,13 +4,13 @@ const bylothPlugin = {
       meta: {
         type: "layout",
         docs: {
-          description: "Disallow padded blocks, except require one before closing brace in non-last callbacks",
+          description: "Disallow padded blocks, except require one before a closing bracket that is buried by trailing code on the same line",
           recommended: false
         },
         fixable: "whitespace",
         schema: [],
         messages: {
-          missingBlankLineBeforeClose: "Block must end with a blank line before closing brace in non-last callback arguments.",
+          missingBlankLineBeforeClose: "Block must end with a blank line before the closing bracket when it is followed by trailing code on the same line.",
           unexpectedBlankLineAfterOpen: "Block must not start with a blank line.",
           unexpectedBlankLineBeforeClose: "Block must not end with a blank line."
         }
@@ -22,14 +22,18 @@ const bylothPlugin = {
         const getLineIndentation = (line, column) => line.slice(0, column);
         const getBlockTokens = (node) =>
         {
-          if ((node.body.length === 0) || (node.loc.start.line === node.loc.end.line)) { return null; }
+          if (node.loc.start.line === node.loc.end.line) { return null; }
 
           const openingBrace = sourceCode.getFirstToken(node);
           const closingBrace = sourceCode.getLastToken(node);
-          const firstContentToken = sourceCode.getFirstToken(node, { skip: 1, includeComments: true });
+
+          if (!(openingBrace) || !(closingBrace)) { return null; }
+
+          const firstContentToken = sourceCode.getTokenAfter(openingBrace, { includeComments: true });
           const lastContentToken = sourceCode.getTokenBefore(closingBrace, { includeComments: true });
 
-          if (!(openingBrace) || !(closingBrace) || !(firstContentToken) || !(lastContentToken)) { return null; }
+          if (!(firstContentToken) || !(lastContentToken)) { return null; }
+          if (firstContentToken === closingBrace) { return null; }
 
           return {
             closingBrace,
@@ -78,15 +82,81 @@ const bylothPlugin = {
           return getExtraBlankLinesLocation((lastContentToken.loc.end.line + 1), (closingBrace.loc.start.line - 1));
         };
 
-        const isCallbackWithTrailingArguments = (node) =>
+        const isFunctionExpression = (node) =>
+        {
+          return ((node?.type === "ArrowFunctionExpression") || (node?.type === "FunctionExpression"));
+        };
+
+        const getSubjectExpression = (node) =>
+        {
+          let subject = node;
+
+          if ((subject.type === "BlockStatement") && isFunctionExpression(subject.parent)) { subject = subject.parent; }
+
+          while ((subject.parent?.type === "ArrowFunctionExpression") && (subject.parent.body === subject))
+          {
+            subject = subject.parent;
+          }
+
+          return subject;
+        };
+
+        const isInTrailingPosition = (node) =>
         {
           const { parent } = node;
-
           if (!(parent)) { return false; }
-          if ((parent.type !== "CallExpression") && (parent.type !== "NewExpression")) { return false; }
 
-          const index = parent.arguments.indexOf(node);
-          return ((index !== -1) && (index < (parent.arguments.length - 1)));
+          switch (parent.type)
+          {
+            case "CallExpression":
+            case "NewExpression":
+            {
+              const index = parent.arguments.indexOf(node);
+              if (index !== -1) { return (index < (parent.arguments.length - 1)); }
+
+              return (node === parent.callee);
+            }
+
+            case "ArrayExpression":
+            {
+              const index = parent.elements.indexOf(node);
+              return ((index !== -1) && (index < (parent.elements.length - 1)));
+            }
+
+            case "Property":
+            {
+              const object = parent.parent;
+              if ((node !== parent.value) || (object?.type !== "ObjectExpression")) { return false; }
+
+              const index = object.properties.indexOf(parent);
+              return ((index !== -1) && (index < (object.properties.length - 1)));
+            }
+
+            case "MemberExpression":
+              return (node === parent.object);
+
+            case "TSAsExpression":
+            case "TSSatisfiesExpression":
+              return (node === parent.expression);
+
+            case "BinaryExpression":
+            case "LogicalExpression":
+              return (node === parent.left);
+
+            case "ConditionalExpression":
+              return ((node === parent.test) || (node === parent.consequent));
+
+            default:
+              return false;
+          }
+        };
+
+        const isClosingBraceBuried = (closingBrace) =>
+        {
+          let nextToken = sourceCode.getTokenAfter(closingBrace);
+          if (nextToken && (nextToken.value === ",")) { nextToken = sourceCode.getTokenAfter(nextToken); }
+
+          return ((!!nextToken) && (nextToken.loc.start.line === closingBrace.loc.start.line));
         };
 
         const fixBlankLineBeforeClosingBrace = (tokens, requireBlankLine) =>
@@ -109,7 +179,7 @@ const bylothPlugin = {
           return (fixer) => fixer.replaceTextRange(range, `\n${firstIndentation}`);
         };
 
-        const BlockStatement = (node) =>
+        const checkNode = (node) =>
         {
           const tokens = getBlockTokens(node);
           if (!(tokens)) { return; }
@@ -126,10 +196,8 @@ const bylothPlugin = {
             });
           }
 
-          const { parent } = node;
-
-          const isFunction = ["ArrowFunctionExpression", "FunctionExpression"].includes(parent?.type);
-          const mustHaveBlankLineBeforeClose = ((isFunction) && isCallbackWithTrailingArguments(parent));
+          const subject = getSubjectExpression(node);
+          const mustHaveBlankLineBeforeClose = (isInTrailingPosition(subject) && isClosingBraceBuried(tokens.closingBrace));
           const hasTrailingBlankLine = hasBlankLineBeforeClosingBrace(tokens);
 
           if ((mustHaveBlankLineBeforeClose) && !(hasTrailingBlankLine))
@@ -156,7 +224,11 @@ const bylothPlugin = {
           }
         };
 
-        return { BlockStatement };
+        return {
+          ArrayExpression: checkNode,
+          BlockStatement: checkNode,
+          ObjectExpression: checkNode
+        };
       }
     }
   }
