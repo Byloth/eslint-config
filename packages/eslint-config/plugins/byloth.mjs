@@ -25,7 +25,9 @@ const bylothPlugin = {
           if (node.loc.start.line === node.loc.end.line) { return null; }
 
           const openingBrace = sourceCode.getFirstToken(node);
-          const closingBrace = sourceCode.getLastToken(node);
+          const closingBrace = (node.typeAnnotation)
+            ? sourceCode.getTokenBefore(node.typeAnnotation)
+            : sourceCode.getLastToken(node);
 
           if (!(openingBrace) || !(closingBrace)) { return null; }
 
@@ -87,15 +89,26 @@ const bylothPlugin = {
           return ((node?.type === "ArrowFunctionExpression") || (node?.type === "FunctionExpression"));
         };
 
+        const isLastArgument = (node, parent) =>
+        {
+          if ((parent.type !== "CallExpression") && (parent.type !== "NewExpression")) { return false; }
+
+          return ((parent.arguments.length > 0) && (parent.arguments[parent.arguments.length - 1] === node));
+        };
+
         const getSubjectExpression = (node) =>
         {
           let subject = node;
 
           if ((subject.type === "BlockStatement") && isFunctionExpression(subject.parent)) { subject = subject.parent; }
 
-          while ((subject.parent?.type === "ArrowFunctionExpression") && (subject.parent.body === subject))
+          while (subject.parent)
           {
-            subject = subject.parent;
+            const { parent } = subject;
+
+            if ((parent.type === "ArrowFunctionExpression") && (parent.body === subject)) { subject = parent; }
+            else if (isLastArgument(subject, parent)) { subject = parent; }
+            else { break; }
           }
 
           return subject;
@@ -118,15 +131,31 @@ const bylothPlugin = {
             }
 
             case "ArrayExpression":
+            case "ArrayPattern":
             {
               const index = parent.elements.indexOf(node);
               return ((index !== -1) && (index < (parent.elements.length - 1)));
             }
 
+            case "ArrowFunctionExpression":
+            case "FunctionDeclaration":
+            case "FunctionExpression":
+            {
+              const index = parent.params.indexOf(node);
+              return ((index !== -1) && (index < (parent.params.length - 1)));
+            }
+
+            case "VariableDeclarator":
+              return ((node === parent.id) && (!!parent.init));
+
+            case "AssignmentExpression":
+            case "AssignmentPattern":
+              return (node === parent.left);
+
             case "Property":
             {
               const object = parent.parent;
-              if ((node !== parent.value) || (object?.type !== "ObjectExpression")) { return false; }
+              if ((node !== parent.value) || ((object?.type !== "ObjectExpression") && (object?.type !== "ObjectPattern"))) { return false; }
 
               const index = object.properties.indexOf(parent);
               return ((index !== -1) && (index < (object.properties.length - 1)));
@@ -226,8 +255,10 @@ const bylothPlugin = {
 
         return {
           ArrayExpression: checkNode,
+          ArrayPattern: checkNode,
           BlockStatement: checkNode,
-          ObjectExpression: checkNode
+          ObjectExpression: checkNode,
+          ObjectPattern: checkNode
         };
       }
     }

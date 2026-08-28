@@ -32,8 +32,8 @@
   "types": "index.d.ts",
   "dependencies": {
     "@byloth/eslint-config": "4.0.2",
-    "@typescript-eslint/eslint-plugin": "^8.60.1",
-    "@typescript-eslint/parser": "^8.60.1",
+    "@typescript-eslint/eslint-plugin": "^8.68.0",
+    "@typescript-eslint/parser": "^8.68.0",
     "eslint-plugin-import": "^2.32.0"
   }
 }
